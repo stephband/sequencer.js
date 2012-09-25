@@ -9,14 +9,11 @@ Plays timed data. In sequence. With a timer that compensates for latency, and wi
 
 Reads data in the form:
 
-var data = {
-  0:  [fn, fn],
-  
-  3:  [fn, fn, fn],
-  
-  5:  [fn],
-  
-  12: [fn]
+var data = {<br/>
+  0:  [fn, fn],<br/>
+  3:  [fn, fn, fn],<br/>
+  5:  [fn],<br/>
+  12: [fn]<br/>
 };
 
 ...where the keys are the times and the arrays of functions are the functions to be called at those times.
