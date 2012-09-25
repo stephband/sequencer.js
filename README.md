@@ -11,8 +11,11 @@ Reads data in the form:
 
 var data = {
   0:  [fn, fn],
+  
   3:  [fn, fn, fn],
+  
   5:  [fn],
+  
   12: [fn]
 };
 
