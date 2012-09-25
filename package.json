@@ -1,0 +1,17 @@
+{
+  "name": "sequence.js",
+  "version": "0.1",
+  "description": "Plays timed data. In sequence. With a timer that compensates for latency, and with live control of speed and offset.",
+  "main": "sequence.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": "",
+  "keywords": ["time", "timeout", "sequence", "data", "play", "music", "event"],
+  "author": {
+    "name": "Stephen Band",
+    "url": "http://stephband.info",
+    "twitter": "stephband"
+  },
+  "license": "BSD"
+}

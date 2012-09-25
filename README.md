@@ -1,0 +1,1 @@
+Plays timed data. In sequence. With a timer that compensates for latency, and with live control of speed and offset.
