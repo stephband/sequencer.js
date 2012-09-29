@@ -21,10 +21,6 @@
 		return (+new Date());
 	}
 	
-	function playEvent(e) {
-		if (typeof e === 'function') { e(); }
-	}
-	
 	function cue(t1, t2, fn) {
 		return setTimeout(fn, t2 > t1 ? t2 - t1 : 0);
 	}
@@ -40,14 +36,14 @@
 	
 	// Constructor
 	
-	function Sequence(data, options) {
+	function Sequence(data, fn) {
 		this.data = data;
-		this.speed = options && options.speed || 1;
-		this.offset = options && options.offset || 0;
+		this.speed = 1;
+		this.offset = 0;
 		this.keys = Object.keys(data).map(parseFloat).sort(greater);
 		this.index = nextIndex(this.keys, this.offset * this.speed);
 		this.fire = (function() {
-			fire(this, this.data, this.fire);
+			fire(this, this.data, this.fire, fn);
 		}).bind(this);
 		
 		if (debug) { console.log('sequence'); }
@@ -56,7 +52,7 @@
 	
 	// Private
 	
-	function fire(seq, data, fn) {
+	function fire(seq, data, fireFn, fn) {
 		var t = seq.keys[seq.index];
 		var events = data[t];
 		
@@ -70,12 +66,12 @@
 			);
 		}
 		
-		events.forEach(playEvent);
+		events.forEach(fn);
 		
 		if (++seq.index >= seq.keys.length) { return seq.stop(); }
 		
 		t = seq.keys[seq.index];
-		seq._timer = cue(now() - seq.startTime, (t + seq.offset) / seq.speed, fn);
+		seq._timer = cue(now() - seq.startTime, (t + seq.offset) / seq.speed, fireFn);
 	}
 	
 	

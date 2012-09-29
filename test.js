@@ -43,6 +43,10 @@ var sequence = new Sequence({
 	2:   [function() { console.log('three'); }],
 	3:   [function() { console.log('four'); }],
 	3.5: [function() { console.log('&'); }]
+}, function(e) {
+	// e is the object - in this case a function from the
+	// arrays above.
+	e();
 });
 
 sequence.speed = 0.002;
