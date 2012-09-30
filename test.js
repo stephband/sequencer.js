@@ -37,7 +37,7 @@ var Sequence = require('./sequence');
 
 
 var sequence = new Sequence({
-	0:   [function() { console.log('one'); }, function() { console.log('event2: 0'); }],
+	0.1:   [function() { console.log('one'); }, function() { console.log('event2: 0'); }],
 	1:   [function() { console.log('two'); }],
 	1.5: [function() { console.log('&'); }],
 	2:   [function() { console.log('three'); }],
@@ -47,6 +47,10 @@ var sequence = new Sequence({
 	// e is the object - in this case a function from the
 	// arrays above.
 	e();
+	
+	if (e.id) {
+		jQuery('#' + e.id).trigger(e);
+	}
 });
 
 sequence.speed = 0.002;

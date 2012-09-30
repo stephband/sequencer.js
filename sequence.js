@@ -25,12 +25,16 @@
 		return setTimeout(fn, t2 > t1 ? t2 - t1 : 0);
 	}
 	
-	function nextIndex(times, time) {
-		var l = times.length;
-	
+	function nextIndex(keys, time) {
+		var l = keys.length;
+		
 		while (l--) {
-			if (times[l] <= time) { return l; }
+			if (keys[l] <= time) { return l; }
 		}
+		
+		// If none of the keys are earlier than time, return an
+		// index of 0.
+		return 0;
 	}
 	
 	
@@ -42,6 +46,7 @@
 		this.offset = 0;
 		this.keys = Object.keys(data).map(parseFloat).sort(greater);
 		this.index = nextIndex(this.keys, this.offset * this.speed);
+		
 		this.fire = (function() {
 			fire(this, this.data, this.fire, fn);
 		}).bind(this);
