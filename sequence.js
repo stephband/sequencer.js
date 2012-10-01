@@ -1,10 +1,13 @@
+// sequence.js
+// 0.1.2
+
 // Sequence plays back lists of functions as a timed sequence. Features
 // a self regulating timer that accounts for jitter of previous frames
 // and attempts to make up any time difference. Nor does it drop any
 // frames.
 
 (function(module, undefined){
-	var debug = true;
+	var debug = false;
 	
 	
 	// Pure

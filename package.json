@@ -1,6 +1,6 @@
 {
   "name": "sequence.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Plays timed data. In sequence. With a timer that compensates for latency, and with live control of speed and offset.",
   "main": "sequence.js",
   "scripts": {

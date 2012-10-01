@@ -37,7 +37,7 @@ var Sequence = require('./sequence');
 
 
 var sequence = new Sequence({
-	0.1:   [function() { console.log('one'); }, function() { console.log('event2: 0'); }],
+	0.1:   [function() { console.log('one'); }, function() { console.log('one event2'); }],
 	1:   [function() { console.log('two'); }],
 	1.5: [function() { console.log('&'); }],
 	2:   [function() { console.log('three'); }],
