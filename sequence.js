@@ -42,10 +42,10 @@
 	
 	function Sequence(data, fn) {
 		this.data = data;
-		this.speed = 1;
+		this.rate = 1;
 		this.offset = 0;
 		this.keys = Object.keys(data).map(parseFloat).sort(greater);
-		this.index = nextIndex(this.keys, this.offset * this.speed);
+		this.index = nextIndex(this.keys, this.offset * this.rate);
 		
 		this.fire = (function() {
 			fire(this, this.data, this.fire, fn);
@@ -67,7 +67,7 @@
 				'index:', seq.index,
 				't:', t,
 				'time:', n - seq.startTime,
-				'latency:', n - seq.startTime - (seq.keys[seq.index] + seq.offset) / seq.speed
+				'latency:', n - seq.startTime - (seq.keys[seq.index] + seq.offset) / seq.rate
 			);
 		}
 		
@@ -76,7 +76,7 @@
 		if (++seq.index >= seq.keys.length) { return seq.stop(); }
 		
 		t = seq.keys[seq.index];
-		seq._timer = cue(now() - seq.startTime, (t + seq.offset) / seq.speed, fireFn);
+		seq._timer = cue(now() - seq.startTime, (t + seq.offset) / seq.rate, fireFn);
 	}
 	
 	
@@ -84,16 +84,16 @@
 	
 	function start(time) {
 		this.startTime = time || now();
-		this.play = noop;
+		this.start = noop;
 		this.stop = stop;
 		
 		var t = this.keys[this.index];
 		
-		if (debug) console.log('start:', this.startTime, 'offset:', this.offset, 'speed:', this.speed, 'index:', this.index, 't:', t);
+		if (debug) console.log('start:', this.startTime, 'offset:', this.offset, 'rate:', this.rate, 'index:', this.index, 't:', t);
 		
 		this._timer = cue(
 			now() - this.startTime,
-			t / this.speed + this.offset,
+			t / this.rate + this.offset,
 			this.fire
 		);
 		
@@ -115,14 +115,14 @@
 		start: start,
 		stop: noop,
 		
-		set speed(n) {
+		set rate(n) {
 			var t, s, o;
 			
 			if (this._timer) {
 				clearTimeout(this._timer);
 				
 				t = now() - this.startTime;
-				s = this._speed;
+				s = this._rate;
 				o = this._offset;
 				
 				this._offset = t * (n - s) + o;
@@ -134,11 +134,11 @@
 				);
 			}
 			
-			this._speed = n;
+			this._rate = n;
 		},
 		
-		get speed() {
-			return this._speed;
+		get rate() {
+			return this._rate;
 		},
 		
 		set offset(n) {
@@ -149,7 +149,7 @@
 				
 				this._timer = cue(
 					now() - this.startTime,
-					(this.keys[this.index] + n) / this.speed,
+					(this.keys[this.index] + n) / this.rate,
 					this.fire
 				);
 			}

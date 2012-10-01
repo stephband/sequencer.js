@@ -20,8 +20,8 @@ var Sequence = require('./sequence');
 // }, 0);
 // 
 // setTimeout(function() {
-// 	console.log('Add speed --------');
-// 	sequence.speed = 2;
+// 	console.log('Add rate --------');
+// 	sequence.rate = 2;
 // }, 333);
 // 
 // //setTimeout(function() {
@@ -53,7 +53,7 @@ var sequence = new Sequence({
 	}
 });
 
-sequence.speed = 0.002;
+sequence.rate = 0.002;
 sequence.offset = -1;
 
 sequence.start();
