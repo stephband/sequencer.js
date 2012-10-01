@@ -72,3 +72,13 @@ sequence.offset = 250;
 		</p>
 	</dd>
 </dl>
+
+## Node and the browser
+
+Sequence should run in nodeJS and in modern browsers.
+However, at this point I'm not sure what is the best way to write a module that can be understood by both.
+If anyone wants to enlighten me, please do.
+In the browser it currently throws the error 'module' is not defined.
+A quick fix is to declare:
+<pre>window.module = undefined;</pre>
+&hellip;before including sequence.js.
