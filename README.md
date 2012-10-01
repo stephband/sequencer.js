@@ -27,7 +27,7 @@ var data = {
     };
 </pre>
 
-&hellip;and <code>fn</code> is called for every object in <code>data</code> at the time given by the data key. <code>fn</code> is called with that object as it's first argument:
+&hellip;and <code>fn</code> is called for every object in a <code>data</code> array at the time given by the data key. <code>fn</code> is called with that object as it's first argument:
 
 <pre>
 function fn(obj) {
@@ -47,21 +47,25 @@ function fn(obj) {
 ### Properties
 
 <dl>
-	<dt><code>.rate // defaults to 1</code></dt>
+	<dt><code>.rate</code> (defaults to 1)</dt>
 	<dd>
-		Rate of playback. 1 means 1 unit of timed data per millisecond. Can be changed while sequence is playing.
+		Rate of playback. 1 means 1 per millisecond. A tempo of 120bpm would be a rate of 1 every 500ms, or 0.002. Can be changed while sequence is playing.
 	</dd>
 	
-	<dt><code>.offset // defaults to 0</code></dt>
+	<dt><code>.offset</code> (defaults to 0)</dt>
 	<dd>
 		Playback offset. Offset the timed data to play earlier:
+
 <pre>
 sequence.offset = -100;
 </pre>
+
 		&hellip;or later:
+
 <pre>
 sequence.offset = 250;
 </pre>
+
 		Can be changed while playback is running, without skipping playback of data.
 		When offset is changed such that playback would skip over data, all the data is played at once to 'catch up'.
 		If offset is changed such that data might be replayed, that data is not played again, and the sequence waits until the next unplayed data.
