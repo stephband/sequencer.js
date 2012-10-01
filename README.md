@@ -38,37 +38,37 @@ function fn(obj) {
 ### Methods
 
 <dl>
-	<dt><code>.start()</code></dt>
+	<dt>.start()</dt>
 	<dd>Start playback of data.</dd>
-	<dt><code>.stop()</code></dt>
+	<dt>.stop()</dt>
 	<dd>Stop playback.</dd>
 </dl>
 
 ### Properties
 
 <dl>
-	<dt><code>.rate</code> (defaults to 1)</dt>
+	<dt>.rate</dt>
 	<dd>
-		Rate of playback. 1 means 1 per millisecond. A tempo of 120bpm would be a rate of 1 every 500ms, or 0.002. Can be changed while sequence is playing.
+		<p>Defaults to <code>1</code></p>
+		<p>Rate of playback. 1 means 1 per millisecond. A tempo of 120bpm would be a rate of 1 every 500ms, or 0.002. Can be changed while sequence is playing.</p>
 	</dd>
 	
-	<dt><code>.offset</code> (defaults to 0)</dt>
+	<dt>.offset</dt>
 	<dd>
-		Playback offset. Offset the timed data to play earlier:
-
+		<p>Defaults to <code>0</code></p>
+		<p>Playback offset. Offset the timed data to play earlier:</p>
 <pre>
 sequence.offset = -100;
 </pre>
-
-		&hellip;or later:
-
+		<p>&hellip;or later:</p>
 <pre>
 sequence.offset = 250;
 </pre>
-
+		<p>
 		Can be changed while playback is running, without skipping playback of data.
 		When offset is changed such that playback would skip over data, all the data is played at once to 'catch up'.
 		If offset is changed such that data might be replayed, that data is not played again, and the sequence waits until the next unplayed data.
 		In other words, while the sequence is playing all data is fired only once irrespective of how much you mess with the offset.
+		</p>
 	</dd>
 </dl>
