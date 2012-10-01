@@ -27,7 +27,7 @@ var data = {
     };
 </pre>
 
-&hellip;and <code>fn</code> is called for every object in a <code>data</code> array at the time given by the data key. <code>fn</code> is called with that object as it's first argument:
+&hellip;and <code>fn</code> is called for every object in a <code>data</code> array at the time given by the data key, with that object as it's first argument:
 
 <pre>
 function fn(obj) {
